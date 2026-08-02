@@ -123,10 +123,7 @@ class StaticRequest(BaseModel):
 # --- Routes ---
 @app.get("/health")
 def health_check():
-    return {
-        "status": "ok",
-        "static_model_loaded": static_predictor is not None and static_predictor.model is not None,
-    }
+    return {"status": "ok", "service": "SignBridge"}
 
 @app.post("/predict/static")
 async def predict_static(req: StaticRequest):
